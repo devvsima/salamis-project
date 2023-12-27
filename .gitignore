@@ -1,2 +1,9 @@
-/.vscode
-/.venv
+.idea
+.fleet
+.vscode
+.venv
+.sqlite
+**/__pycache__
+
+**/.env
+**/logs

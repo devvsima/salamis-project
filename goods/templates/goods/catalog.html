@@ -21,103 +21,21 @@
     </ul>
   </div>
 </div>
-<div class="container">
-
-    <div class="many_card">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'main/images/1.jpg' %}" class="card-img-top"
-          alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Название одежды</h5>
-          <p class="card-text">100 грн.</p>
-          <a href="#" class="btn btn-secondary">Купить</a>
+  {%for i in goods%}
+    <div class="container">
+        <div class="many_card">
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'main/images/1.jpg' %}" class="card-img-top"
+              alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+              <p class="card-text">{{i.price}}</p>
+              <a href="#" class="btn btn-secondary">Купить</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  {%endfor%}
 
-    <div class="many_card">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'main/images/2.jpg' %}" class="card-img-top"
-          alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Название одежды</h5>
-          <p class="card-text">100 грн.</p>
-          <a href="#" class="btn btn-primary">Купить</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="many_card">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'main/images/3.jpg' %}" class="card-img-top"
-          alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Название одежды</h5>
-          <p class="card-text">100 грн.</p>
-          <a href="#" class="btn btn-primary">Купить</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="many_card">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'main/images/4.jpg' %}" class="card-img-top"
-          alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Название одежды</h5>
-          <p class="card-text">100 грн.</p>
-          <a href="#" class="btn btn-primary">Купить</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="many_card">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'main/images/5.jpg' %}" class="card-img-top"
-          alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Название одежды</h5>
-          <p class="card-text">100 грн.</p>
-          <a href="#" class="btn btn-primary">Купить</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="many_card">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'main/images/6.jpg' %}" class="card-img-top"
-          alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Название одежды</h5>
-          <p class="card-text">100 грн.</p>
-          <a href="#" class="btn btn-primary">Купить</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="many_card">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'main/images/7.jpg' %}" class="card-img-top"
-          alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Название одежды</h5>
-          <p class="card-text">100 грн.</p>
-          <a href="#" class="btn btn-primary">Купить</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="many_card">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'main/images/11.jpg' %}" class="card-img-top"
-          alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Название одежды</h5>
-          <p class="card-text">100 грн.</p>
-          <a href="#" class="btn btn-primary">Купить</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock info %}

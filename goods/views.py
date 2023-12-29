@@ -1,7 +1,14 @@
 from django.shortcuts import render
 
 def catalog(request):
-    return render(request,'goods/catalog.html')
+    goods = [
+        {'price':100,'name': 'Sima', 'image': 'asdasd'},
+        {'price':100,'name': 'Sima', 'image': 'asdasd'},
+        {'price':100,'name': 'Sima', 'image': 'asdasd'},
+
+        
+             ]
+    return render(request,'goods/catalog.html', goods)
 
 
 def product(request):

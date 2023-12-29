@@ -16,26 +16,27 @@
       Фільтр
     </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Штаны</a></li>
-      <li><a class="dropdown-item" href="#">Кофты</a></li>
+    {%for i in categoris%}
+      <li><a class="dropdown-item" href="#">{{i}}</a></li>
+      {%endfor%}
     </ul>
   </div>
 </div>
-  {%for i in goods%}
-    <div class="container">
-        <div class="many_card">
-          <div class="card" style="width: 18rem;">
-            <img src="{% static 'main/images/1.jpg' %}" class="card-img-top"
-              alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{i.name}}</h5>
-              <p class="card-text">{{i.price}}</p>
-              <a href="#" class="btn btn-secondary">Купить</a>
-            </div>
+<div class="container">
+  <div class="many_card">
+    <div class="card" style="width: 18rem;">
+        {%for i in products%}
+          <img src="{{i.image}}" class="card-img-top"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{i.name}}</h5>
+            <p class="card-text">{{i.price}} ₴</p>
+            <a href="#" class="btn btn-secondary">Купить</a>
           </div>
-        </div>
+        {%endfor%}
       </div>
     </div>
-  {%endfor%}
+  </div>
+</div>
 
 {% endblock info %}

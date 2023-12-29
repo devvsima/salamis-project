@@ -1,42 +1,48 @@
-{% extends "main/base.html" %}  
+{% extends "main/base.html" %}
 {%load static%}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 {% endblock css %}
+<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 
 {% block title %}
 <title>Каталог</title>
 {% endblock title %}
-{% block info %}
-
 <div class="container">
   <div class="btn-group" role="group">
-    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+      aria-expanded="false">
       Фільтр
     </button>
     <ul class="dropdown-menu">
-    {%for i in categoris%}
+      {%for i in categoris%}
       <li><a class="dropdown-item" href="#">{{i}}</a></li>
       {%endfor%}
     </ul>
   </div>
 </div>
+
+{% block info %}
 <div class="container">
+  {%for i in products%}
+
   <div class="many_card">
+
     <div class="card" style="width: 18rem;">
-        {%for i in products%}
-          <img src="{{i.image}}" class="card-img-top"
-            alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{i.name}}</h5>
-            <p class="card-text">{{i.price}} ₴</p>
-            <a href="#" class="btn btn-secondary">Купить</a>
-          </div>
-        {%endfor%}
+      {%if i.image%}
+      <img src="{{i.image.url}}" class="card-img-top" alt="...">
+      {%else%}
+      <img src="{%static 'goods/nf.jpg'%}" class="card-img-top" alt="...">
+
+      {%endif%}
+      <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{i.price}} ₴</p>
+        <a href="#" class="btn btn-secondary">Купить</a>
       </div>
     </div>
   </div>
+  {%endfor%}
 </div>
 
 {% endblock info %}

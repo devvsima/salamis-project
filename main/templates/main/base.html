@@ -38,6 +38,12 @@
                 href="{% url 'goods:index' %}">Каталог</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'main:about' %}">Кошик</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'main:about' %}">Кабінет</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'main:about' %}">Про нас</a>
             </li>
           </ul>
@@ -50,6 +56,10 @@
 
     {% block info %}
     {% endblock info %}
-
+    <footer class="py-4 bg-white">
+      <div class="container">
+          <p class="m-0 text-center text-black">Salamis 2023</p>
+      </div>
+  </footer>
   </body>
 </html>

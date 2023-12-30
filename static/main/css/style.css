@@ -1,43 +1,19 @@
-/* .product-list__content {
-    display: flex;
-    flex-wrap: wrap;
-
-    justify-content: center;  
 
 
-
-} */
-
-/* .container {
+.container {
     display: flex;
     justify-content: center;  
     align-items: start; 
     align-content: stretch;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 1000px; 
+    width: 1200px; 
     padding: 5px 5px 5px 5px;
     
-} */
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.card {
-    flex: 0 0 calc(33.33% - 20px); /* Выберите соответствующий размер для вашего макета */
-    /* Стилизация карточки товара */
 }
 
 .container {
     max-width: 1250px;
-    margin: 0 auto; /* Это выровняет контейнер по центру */
-    padding: 0 15px; /* Добавление отступов слева и справа, если нужно */
-}
-
-.many_card{
-    padding: 10px 10px 10px 10px;
-    /* margin: 15px 20px; */
-
+    margin: 0 auto;
+    padding: 0 15px;
 }

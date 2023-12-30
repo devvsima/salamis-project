@@ -30,14 +30,21 @@
     <div class="col-md-3">
       <div class="card" style="width: 18rem;  margin-bottom: 12px;">
         {%if i.image%}
-        <img src="{{i.image.url}}" class="card-img-top" style="width: 100%; height: 380px;" alt="...">
+          <img src="{{i.image.url}}" class="card-img-top" style="width: 100%; height: 380px;" alt="...">
         {%else%}
-        <img src="{%static 'goods/nf2.png'%}" class="card-img-top" style="width: 100%; height: 380px;" alt="...">
+          <img src="{%static 'goods/nf2.png'%}" class="card-img-top" style="width: 100%; height: 380px;" alt="...">
         {%endif%}
+        <!-- нижняя чясть карты -->
         <div class="card-body">
           <h5 class="card-title">{{i.name}}</h5>
-          <p class="card-text">{{i.price}} ₴</p>
+          {%if i.discount%}
+            <p class="original-price">{{i.price}} ₴</p>
+            <p class="discounted-price">{{i.sell_price}} ₴</p>
+          {%else%}
+            <p class="discounted-price">{{i.price}} ₴</p>
+          {%endif%}
           <a href="#" class="btn btn-secondary">Купить</a>
+        <!--  -->
         </div>
       </div>
     </div>

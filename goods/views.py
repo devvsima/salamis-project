@@ -2,11 +2,10 @@ from django.shortcuts import render
 from goods.models import Categories, Products
 
 def catalog(request):
-    categoris_all = Categories.objects.all()
+    # categoris_all = Categories.objects.all()
 
     goods = Products.objects.all()
-    result ={'products': goods,
-             'categoris': categoris_all}
+    result ={'products': goods}
     
      
     return render(request,'goods/catalog.html', result)

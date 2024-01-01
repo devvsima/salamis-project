@@ -1,5 +1,7 @@
 {% extends "main/base.html" %}
 {%load static%}
+{%load goods_tags%}
+
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
@@ -17,6 +19,8 @@
       Фільтр
     </button>
     <ul class="dropdown-menu">
+
+      {%tag_categories as categoris%}
       {%for i in categoris%}
       <li><a class="dropdown-item" href="#">{{i}}</a></li>
       {%endfor%}
@@ -39,7 +43,7 @@
           <h5 class="card-title">{{i.name}}</h5>
           {%if i.discount%}
             <p class="original-price">{{i.price}} ₴</p>
-            <p class="discounted-price">{{i.sell_price}} ₴</p>
+            <p class="discounted-price">{{i.discount_price}} ₴</p>
           {%else%}
             <p class="discounted-price">{{i.price}} ₴</p>
           {%endif%}

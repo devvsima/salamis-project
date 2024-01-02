@@ -7,48 +7,63 @@
 {% endblock title %}
 
 {% block info %}
-<div class="container">
-
-  <div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{product.image.url}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{product.image.url}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{product.image.url}}" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
-
-<div class="container">
-  <div class="accordion" id="accordionPanelsStayOpenExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-          data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-          Опис
-        </button>
-      </h2>
-      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-        <div class="accordion-body">
-          {{product.description}}
+<div class="container" style="padding-top: 30px;">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{product.image.url}}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{{product.image.url}}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{{product.image.url}}" class="d-block w-100" alt="...">
+          </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div style="margin-left: 20px;">
+        <div class="card">
+          <div class="card-header">
+            <h2>{{product.name}}</h2>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{product.description}}</h5>
+            <p class="card-text">{{product.description}}
+              <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Ссылка с href
+                </a>
+              </p>
+
+
+            </p>
+            <a href="#" class="btn btn-primary">Додати до кошика</a>
+          </div>
+          <div class="collapse card-text" id="collapseExample">
+            <div class="card card-body">
+             ОПис товару
+            </div>
+          </div>
+        </div>
+      
       </div>
     </div>
   </div>
 </div>
+
 
 
 {% endblock info %}

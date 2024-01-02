@@ -40,7 +40,9 @@
         {%endif%}
         <!-- нижняя чясть карты -->
         <div class="card-body">
-          <h5 class="card-title">{{i.name}}</h5>
+          <a href='{% url "catalog:product" i.slug %}'>
+            <h5 class="card-title">{{i.name}}</h5>
+          </a>
           {%if i.discount%}
             <p class="original-price">{{i.price}} ₴</p>
             <p class="discounted-price">{{i.discount_price}} ₴</p>

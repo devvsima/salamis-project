@@ -46,14 +46,14 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'main:about' %}">Про нас</a>
             </li>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Пошук</button>
+            </form>
           </ul>
         </div>
       </div>
     </nav>
-    <ul class="dropdown-menu bg-dark" data-bs-dark="dark">
-      <li><a class="dropdown-item text-white"></a>sds</li>
-    </ul>
-
     {% block info %}
     {% endblock info %}
     <footer class="py-4 bg-white">

@@ -19,10 +19,9 @@
       Фільтр
     </button>
     <ul class="dropdown-menu">
-
       {%tag_categories as categoris%}
       {%for i in categoris%}
-      <li><a class="dropdown-item" href="#">{{i}}</a></li>
+      <li><a class="dropdown-item" href="{% url 'catalog:index' i.slug %}">{{i}}</a></li>
       {%endfor%}
     </ul>
   </div>

@@ -2,3 +2,15 @@
     margin-left: 100px;
     padding-top: 30px;
 }
+/* 
+* {
+    font-family: 'Engine';
+    src: url('/static/main/css/Raleway-VariableFont_wght.');
+    font-weight: 400;
+    font-style: normal;
+} */
+
+a {
+    color: #000; /* Черный цвет для ссылок */
+    text-decoration: none; /* Убрать подчеркивание ссылок */
+}

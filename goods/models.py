@@ -11,7 +11,7 @@ class Categories(models.Model):
         db_table = "category"
         verbose_name = "категорію"
         verbose_name_plural = "Категорії"
-        
+          
     def __str__(self) -> str:
         return self.name
 

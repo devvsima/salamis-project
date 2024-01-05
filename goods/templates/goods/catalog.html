@@ -35,13 +35,13 @@
         aria-expanded="false">
         Сортування
       </button>
-
-        <form action method="get" class="dropdown-menu bg-white"
+        <form action="{% url 'catalog:index' slug_url%}" method="get" class="dropdown-menu bg-white"
           data-bs-theme="white">
           <div class="form-check text-dark mx-3">
             <input class="form-check-input" type="checkbox" name="on_sale"
-              id="flexCheckDefault" value="on">
-            <input type="hidden" name="q" value="request.GET.q">
+              id="flexCheckDefault" value="on"
+              {% if request.GET.on_sale == 'on'%}checked{%endif%}>
+            <!-- <input type="hidden" name="q" value="request.GET.q"> -->
             <label class="form-check-label" for="flexCheckDefault">
               Товари по акції
             </label>
@@ -49,21 +49,24 @@
           <p class="text-dark mx-3 mt-3">______________________</p>
           <div class="form-check text-dark mx-3">
             <input class="form-check-input" type="radio" name="order_by"
-              id="flexRadioDefault1" value="default" checked>
+              id="flexRadioDefault1" value="default"
+              {%if not request.GET.order_by or request.GET.order_by == 'default'%}checked{%endif%}>
             <label class="form-check-label" for="flexRadioDefault1">
               Стандартний
             </label>
           </div>
           <div class="form-check text-dark mx-3">
             <input class="form-check-input" type="radio" name="order_by"
-              id="flexRadioDefault2" value="price">
+              id="flexRadioDefault2" value="price"
+              {% if request.GET.order_by == 'price'%}checked{%endif%}>
             <label class="form-check-label" for="flexRadioDefault2">
               Від дешевих до дорогих
             </label>
           </div>
           <div class="form-check text-dark mx-3">
             <input class="form-check-input" type="radio" name="order_by"
-              id="flexRadioDefault3" value="-price">
+              id="flexRadioDefault3" value="-price"
+              {% if request.GET.order_by == '-price'%}checked{%endif%}>
             <label class="form-check-label" for="flexRadioDefault3">
               Від дорогих до дешевих
             </label>

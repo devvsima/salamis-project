@@ -15,18 +15,19 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'main:index' %}">Salamis</a>
+        <a class="navbar-brand" href="{% url 'main:index'%}">Salamis</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false"
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- нафигация -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page"
-                href="{% url 'goods:index' %}">Каталог</a>
+                href="{% url 'goods:index' category_slug='all' %}">Каталог</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'main:about' %}">Кошик</a>
@@ -37,12 +38,15 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'main:about' %}">Про нас</a>
             </li>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Пошук</button>
-            </form>
+            <!-- поиск -->
+            
+            
           </ul>
         </div>
+        <form class="d-flex" role="search" action="{% url 'catalog:search' %}" method='get'>
+          <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-secondary" type="submit">Пошук</button>
+        </form>
       </div>
     </nav>
     {% block info %}

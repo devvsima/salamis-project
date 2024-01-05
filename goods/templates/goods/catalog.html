@@ -34,45 +34,47 @@
         aria-expanded="false">
         Сортування
       </button>
-        <form action="{% url "catalog:index" slug_url %}" method="get" class="dropdown-menu bg-white"
-          data-bs-theme="white">
-          <div class="form-check text-dark mx-3">
-            <input class="form-check-input" type="checkbox" name="on_sale"
-              id="flexCheckDefault" value="on"
-              {% if request.GET.on_sale == "on" %}checked{% endif %}>
-            <!-- <input type="hidden" name="q" value="request.GET.q"> -->
-            <label class="form-check-label" for="flexCheckDefault">
-              Товари по акції
-            </label>
-          </div>
-          <p class="text-dark mx-3 mt-3">______________________</p>
-          <div class="form-check text-dark mx-3">
-            <input class="form-check-input" type="radio" name="order_by"
-              id="flexRadioDefault1" value="default"
-              {% if not request.GET.order_by or request.GET.order_by == "default" %}checked{% endif %}>
-            <label class="form-check-label" for="flexRadioDefault1">
-              Стандартний
-            </label>
-          </div>
-          <div class="form-check text-dark mx-3">
-            <input class="form-check-input" type="radio" name="order_by"
-              id="flexRadioDefault2" value="price"
-              {% if request.GET.order_by == 'price' %}checked{% endif %}>
-            <label class="form-check-label" for="flexRadioDefault2">
-              Від дешевих до дорогих
-            </label>
-          </div>
-          <div class="form-check text-dark mx-3">
-            <input class="form-check-input" type="radio" name="order_by"
-              id="flexRadioDefault3" value="-price"
-              {% if request.GET.order_by == '-price' %}checked{% endif %}>
-            <label class="form-check-label" for="flexRadioDefault3">
-              Від дорогих до дешевих
-            </label>
-          </div>
-          <button type="submit" class="btn btn-primary mx-3 mt-3">Застосувати</button>
-        </form>
-      </div>
+      <form action="{% if request.GET.q %}{% url "catalog:search" %}{% else %}{% url "catalog:index" slug_url %}{% endif %}" method="get" class="dropdown-menu bg-white"
+        data-bs-theme="white">
+        <div class="form-check text-dark mx-3">
+          <input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on"
+          {% if request.GET.on_sale == "on" %}checked{% endif %}>
+
+          {% if request.GET.q %}
+            <input type="hidden" name="q" value="{{request.GET.q}}">
+          {% endif %}
+
+          <label class="form-check-label" for="flexCheckDefault">
+            Товари по акції
+          </label>
+        </div>
+        <p class="text-dark mx-3 mt-3">______________________</p>
+        <div class="form-check text-dark mx-3">
+          <input class="form-check-input" type="radio" name="order_by"
+            id="flexRadioDefault1" value="default"
+            {% if not request.GET.order_by or request.GET.order_by == "default" %}checked{% endif %}>
+          <label class="form-check-label" for="flexRadioDefault1">
+            Стандартний
+          </label>
+        </div>
+        <div class="form-check text-dark mx-3">
+          <input class="form-check-input" type="radio" name="order_by"
+            id="flexRadioDefault2" value="price"
+            {% if request.GET.order_by == 'price' %}checked{% endif %}>
+          <label class="form-check-label" for="flexRadioDefault2">
+            Від дешевих до дорогих
+          </label>
+        </div>
+        <div class="form-check text-dark mx-3">
+          <input class="form-check-input" type="radio" name="order_by"
+            id="flexRadioDefault3" value="-price"
+            {% if request.GET.order_by == '-price' %}checked{% endif %}>
+          <label class="form-check-label" for="flexRadioDefault3">
+            Від дорогих до дешевих
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mx-3 mt-3">Застосувати</button>
+      </form>
     </div>
   </div>
 </div>

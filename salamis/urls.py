@@ -23,9 +23,11 @@ from salamis.settings import DEBUG, MEDIA_URL, MEDIA_ROOT
 urlpatterns = [
     # admin
     path('admin/', admin.site.urls),    
-
+    # any
     path('', include('main.urls', namespace='main')),
     path('catalog/', include('goods.urls', namespace='catalog')),
+    path('user/', include('users.urls', namespace='user')),
+
 
 ]
 if DEBUG:

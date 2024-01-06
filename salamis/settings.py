@@ -82,11 +82,26 @@ WSGI_APPLICATION = 'salamis.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+from environs import Env
+env = Env()
+env.read_env()
+
+name = env.str("name", default=None)
+user = env.str("user", default=None)
+password = env("password", default=None)
+host = env("host", default=None)
+port = env("port", default=None)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': name,
+        'USER': user,
+        'PASSWORD': password,
+        'HOST': host,
+        'PORT': port,
+
+
     }
 }
 

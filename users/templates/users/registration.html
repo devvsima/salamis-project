@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="login_form">
+<form action="{% url 'user:registration' %}" method="post" class="login_form">
 
   <div class="container">
 
@@ -50,7 +50,7 @@
 
     </div>
   </div>
-</div>
+</а>
 
 
 {% endblock content %}

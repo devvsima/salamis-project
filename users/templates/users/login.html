@@ -6,40 +6,16 @@
 {% endblock title %}
 
 {% block content %}
-<form>
-<div class="login_form">
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-4 content-center">
-        <br>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1"
-            aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted"></small>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control"
-            id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input"
-          id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Запам'ятати мене</label>
-        </div>
-        <a href="#">Забув пароль?</a>
-        
-        <br>
-        <br>
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
-          <br>
-          <a href="{% url 'user:registration' %}">Регістрація</a>
-        </div>
-      </div>
-    </div>
+<form action="{% url 'user:login' %}" class="login_form" method="POST">
+  {% csrf_token %}
+  <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" id="username">
   </div>
-</div>
+  <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" id="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
 {% endblock content %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -33,7 +33,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('main:index'))
+                return redirect(reverse('main:index'))
     else:   
         form = UserLoginForm()
 
@@ -45,11 +45,8 @@ def login(request):
     return render(request, 'users/login.html', context)
 
 def logout(request):
-    context = {
-        'title': "logout",
-    }
-
-    return render(request, '', context)
+    auth.logout(request)
+    return redirect(reverse('main:index'))
 
 def profile(request):
     context = {

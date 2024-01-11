@@ -18,7 +18,8 @@ a {
     color: #000; /* Черный цвет для ссылок */
     text-decoration: none; /* Убрать подчеркивание ссылок */
 }
-.btnsn {
+
+.btn_gradient_purple {
     display: inline-flex;
     height: 40px;
     white-space: nowrap;

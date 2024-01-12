@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from .forms import UserLoginForm, UserRegistrationForm, ProfileForm
 
@@ -33,6 +34,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
+                messages.success(request ,f"{username}, ви війшли в аккаунт")
                 return redirect(reverse('main:index'))
     else:   
         form = UserLoginForm()
@@ -44,10 +46,12 @@ def login(request):
 
     return render(request, 'users/login.html', context)
 
+@login_required
 def logout(request):
     auth.logout(request)
     return redirect(reverse('main:index'))
 
+@login_required
 def profile(request):
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)

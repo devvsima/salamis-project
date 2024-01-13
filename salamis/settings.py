@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+from environs import Env
+
+env = Env()
+env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#pcn1wl41v!l*vn5d$#tek_w@p7)k83h+dbd*4656ixldaksei'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('debug', default=True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bdfgndn-0a7512b1a152.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -52,6 +57,7 @@ INTERNAL_IPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,15 +91,12 @@ WSGI_APPLICATION = 'salamis.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-from environs import Env
-env = Env()
-env.read_env()
 
 name = env.str("name", default=None)
 user = env.str("user", default=None)
-password = env("password", default=None)
-host = env("host", default=None)
-port = env("port", default=None)
+password = env.str("password", default=None)
+host = env.str("host", default=None)
+port = env.int("port", default=None)
 
 DATABASES = {
     'default': {
@@ -103,8 +106,9 @@ DATABASES = {
         'PASSWORD': password,
         'HOST': host,
         'PORT': port,
-
-
+    } if name and user and password and host and port else {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "database.sqlite3",
     }
 }
 AUTH_USER_MODEL = 'users.User'
@@ -143,14 +147,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'media/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/user/login/'

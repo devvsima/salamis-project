@@ -73,4 +73,10 @@ a {
     background-color: #999c9c;
     color: aliceblue;
 }
+.page-link{
+    color: #191919;
 
+}
+.active>.page-link{
+    background-color: #3b3b3bab;
+}

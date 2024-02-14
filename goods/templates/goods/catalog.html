@@ -84,13 +84,13 @@
   <div class="row">
     {% for i in products %}
       <div class="col-md-3">
-        <div class="card" style="width: 18rem;  margin-bottom: 12px;">
+        <div class="card" style="width: 19rem;  margin-bottom: 12px;">
           {% if i.image %}
             <img src="{{i.image.url}}" class="card-img-top"
-              style="width: 100%; height: 380px;" alt="...">
+              style="width: 100%; height: 420px;" alt="...">
           {% else %}
             <img src="{%static 'goods/nf2.png'%}" class="card-img-top"
-              style="width: 100%; height: 380px;" alt="...">
+              style="width: 100%; height: 420px;" alt="...">
           {% endif %}
           <!-- нижняя чясть карты -->
           <div class="card-body">

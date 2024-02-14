@@ -24,7 +24,7 @@ def catalog(request, category_slug=None):
         goods = goods.order_by(order_by)
 
 
-    paginator = Paginator(goods, 8)
+    paginator = Paginator(goods, 4)
     current_page = paginator.page(int(page))
 
     context = {

@@ -2,6 +2,15 @@
     margin-left: 100px;
     padding-top: 30px;
 }
+* {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 12;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100,
+      "YTLC" 500;
+  }
 /* 
 * {
     font-family: 'Engine';
@@ -43,3 +52,25 @@ a {
     float: right;
     margin-right: 6px;
 }
+
+.carousel-inner {
+    border-radius: 10px;
+}
+
+.product-card .btn{
+    border-color: #979797;
+}
+
+.product-card .btn:hover{
+    background-color: #098772;
+    color: aliceblue;
+}
+
+.product-card {
+    height: 700px;
+}
+.product-card .card-header {
+    background-color: #999c9c;
+    color: aliceblue;
+}
+

@@ -2,8 +2,39 @@
 {%load static%}
 
 {% block title %}
-<title>Home</title>
+<title>{{title}}</title>
 {% endblock title %}
+
+
 {% block content %}
-<h1>Домашня сторінка</h1>
+
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+          <h5 class="card-title"> {{i.name}}</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+    
+            <div class="col-md-6 ">
+              
+              <img src="{{products.image.url}}" class="img-fluid" alt="Responsive image" style="max-height: 300px; border-radius: 16px; ">
+            </div>
+            <div class="col-md-6 ">
+              <p class="card-text">{{products.description}}</p>
+            </div>
+          </div>
+    
+        <!-- <a href="#" class="btn btn" style="border: 2px; border-color:black>Go somewhere</a> -->
+        </div>
+        <div class="card-footer text-body-secondary">
+        </div>
+      </div>
+      <br>
+    </div>
+</div>
+
+    
+  
+    
 {% endblock content %}

@@ -1,8 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
-# Create your views here.
+from goods.models import Products
 def index(request) -> HttpResponse:
-    return render(request, 'main/index.html', {'sd':1})
+    products = Products.objects.first()
+    context = {
+        "title": 'Salamis',
+        "products": products,
+    }
+    return render(request, 'main/index.html', context)
 
 def about(request) -> HttpResponse:
-    return render(request, 'main/about.html', {'sd':1})
+    context = {
+        "title": 'About us',
+    }
+    return render(request, 'main/about.html', context)

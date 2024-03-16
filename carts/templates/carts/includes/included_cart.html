@@ -1,21 +1,25 @@
 {% load static %}
+{% load carts_tags %}
 
-  
+{% user_carts request as carts %}
+
   <!-- Модальное окно -->
   <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+      {% for cart in carts %}
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Кошик</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
         </div>
         <div class="modal-body">
-          ...
+            {{cart.product.name}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрить</button>
+            <button type="button" class="btn btn-primary">Зберегти зміни </button>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрить</button>
-          <button type="button" class="btn btn-primary">Зберегти зміни </button>
-        </div>
-      </div>
+        {% endfor %}
     </div>
   </div>

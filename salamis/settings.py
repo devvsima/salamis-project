@@ -94,10 +94,10 @@ WSGI_APPLICATION = 'salamis.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 name = env.str("name", default=None)
-user = env.str("user", default=None)
+user = env.str("user", default="postgres")
 password = env.str("password", default=None)
-host = env.str("host", default=None)
-port = env.int("port", default=None)
+host = env.str("host", default="localhost")
+port = env("port", default=5432)
 
 DATABASES = {
     'default': {

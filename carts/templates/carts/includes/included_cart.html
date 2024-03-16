@@ -6,20 +6,33 @@
   <!-- Модальное окно -->
   <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      {% for cart in carts %}
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Кошик</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрить"></button>
         </div>
-        <div class="modal-body">
-            {{cart.product.name}}
-          </div>
+        
+        {% for cart in carts %}
+          <div class="modal-body">
+            <strong>
+
+              {{cart.product.name}}
+              {{cart.product.discount_price}}
+
+            </strong>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <input type="text" class="form-control number" value="{{cart.quantity}}">
+                  <button type="button" class="btn btn"">-</button>
+                  <button type="button" class="btn btn"">+</button>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          Разом: {{carts.total_quantity}}
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрить</button>
-            <button type="button" class="btn btn-primary">Зберегти зміни </button>
+            <button type="button" class="btn btn-primary">Замовити</button>
           </div>
         </div>
-        {% endfor %}
     </div>
   </div>

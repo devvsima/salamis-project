@@ -7,13 +7,13 @@ from goods.models import Products
 
 class CartQueryset(models.QuerySet):
     def total_price(self):
-        return sum(i.products_price() for i in self)  
+        return sum(cart.products_price() for cart in self)
+    
     def total_quantity(self):
         if self:
-            return sum(i.quantity() for i in self)  
-        return 0 
+            return sum(cart.quantity for cart in self)
+        return 0
 
-# Create your models here.
 class Cart(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,blank=True, null=True, verbose_name="Користувач")
     product = models.ForeignKey(to=Products, on_delete=models.CASCADE, verbose_name="Товар")
@@ -27,10 +27,11 @@ class Cart(models.Model):
         verbose_name_plural = 'Кошик'
 
     objects = CartQueryset().as_manager()
+
     def products_price(self):
         return round(self.product.discount_price() * self.quantity, 2)
 
 
     def __str__(self):
-        return f"Кошик {self.user.username} | Товар {self.product} | Кількість {self.quantity}"
+        return f"Кошик {self.user.username} | Товар {self.product.name} | Кількість {self.quantity}"
     

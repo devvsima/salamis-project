@@ -3,15 +3,14 @@
 
 {% user_carts request as carts %}
 
-  <!-- Модальное окно -->
   <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Кошик</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрить"></button>
-        </div>
-        
+        </div>EEE
+        SDSDSDSDE
         {% for cart in carts %}
           <div class="modal-body">
             <strong>
@@ -29,8 +28,10 @@
               </div>
             </div>
           {% endfor %}
-          Разом: {{carts.total_quantity}}
+          
           <div class="modal-footer">
+            {{carts.total_quantity}}
+            Разом: {{carts.total_price}}
             <button type="button" class="btn btn-primary">Замовити</button>
           </div>
         </div>

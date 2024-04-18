@@ -10,14 +10,14 @@
   <div class="row">
     <div class="container mt-4">
       <div class="text-center">
-        <h1>Профіль користувача</h1>
-        <img src="{% static 'goods/wh.png' %}" alt="Profile Picture"
+        <h2>Профіль користувача</h2>
+        <img src="{% static 'goods/unUser.png' %}" alt="Profile Picture"
           class="rounded-circle img-fluid"
           style="width: 150px; height: 150px; object-fit: cover;">
       </div>
 
       <div class="mt-4">
-        <h2>Деталі</h2>
+        <h3>Деталі</h3>
         <p><strong>Ім'я:</strong> {{user.username}}</p>
         <p><strong>Пошта:</strong> {{user.email}}</p>
         <p><strong>Адреса:</strong> 123 Main Street, Cityville</p>
@@ -27,7 +27,7 @@
         Редагувати
       </button>
       <div class="mt-4">
-        <h2>Історія покупок</h2>
+        <h3>Історія покупок</h3>
         <table class="table">
           <thead>
             <tr>

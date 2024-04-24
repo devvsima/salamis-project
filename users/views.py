@@ -34,7 +34,10 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                messages.success(request ,f"{username}, ви війшли в аккаунт")
+                messages.success(request ,f"{username}, ви війшли в аккаунт!")
+                redirect_page = request.POST.get('next', None)
+                if redirect_page and redirect_page != reverse('user:logout'):
+                    return HttpResponseRedirect(request.POST.get('next'))
                 return redirect(reverse('main:index'))
     else:   
         form = UserLoginForm()

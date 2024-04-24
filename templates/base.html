@@ -37,10 +37,10 @@
             <a class="nav-link" href="{% url 'main:about' %}">Про нас</a>
           </li>
           <li class="nav-item">
-
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#cartModal">
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#cartModal" style="cursor: pointer;">
               Кошик
             </a>
+            
 
             <!-- Модальное окно -->
             {% include "carts\includes\included_cart.html" %}

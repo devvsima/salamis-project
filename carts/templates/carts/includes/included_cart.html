@@ -3,36 +3,66 @@
 
 {% user_carts request as carts %}
 
-  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Кошик</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрить"></button>
-        </div>
-        {% for cart in carts %}
-          <div class="modal-body">
-            <strong>
+<div class="modal fade" id="cartModal" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Кошик</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Закрить"></button>
+      </div>
+      {% for cart in carts %}
 
-              {{cart.product.name}}
-              {{cart.product.discount_price}}
+      <div class="modal-body">
+        <div class="row">
+          <div class="card mb-3 text-bg-light shadow-lg">
+            <div class="card-header">
+              <h5 class="card-title">{{cart.product.name}}</h5>
+              {{cart.product.discount_price}} грн
 
-            </strong>
-              <div class="input-group">
-                <div class="input-group-btn">
-                  <input type="text" class="form-control number" value="{{cart.quantity}}">
-                  <button type="button" class="btn btn"">-</button>
-                  <button type="button" class="btn btn"">+</button>
+              <div class="col-6">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button type="button"
+                      class="btn btn-secondary btn-sm decrement"
+                      data-cart-id data-cart-change-url>-</button>
+                  </span>
+                  <input type="text" class="form-control number"
+                    value="{{cart.quantity}}"
+                    readonly>
+                  <span class="input-group-btn">
+                    <button type="button"
+                      class="btn btn-secondary btn-sm increment"
+                      data-cart-id data-cart-change-url>+</button>
+                  </span>
                 </div>
               </div>
             </div>
-          {% endfor %}
-          
-          <div class="modal-footer">
-            {{carts.total_quantity}}
-            Разом: {{carts.total_price}}
-            <button type="button" class="btn btn-primary">Замовити</button>
           </div>
         </div>
+      </div>
+      {% endfor %}
+      <div class="modal-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              Кількість товарів: {{carts.total_quantity}}
+            </div>
+            <div class="col">
+              Ітогова ціна: {{carts.total_price}}
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+              <button type="button" style="width: 300px;"
+                class="btn btn-secondary">Замовити</button>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
     </div>
   </div>
+</div>

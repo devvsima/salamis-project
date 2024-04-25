@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% load static %}
+{% load carts_tags %}
+
+{% user_carts request as carts %}
+
+<br>
+<div class="container">
+
+  <div class="row">
+    {% for cart in carts %}
+    <div class="card mb-3 text-bg-light shadow-lg">
+      <div class="card-header">
+        <div class="card-title">{{cart.product.name}}
+
+          <a href="{% url 'cart:cart_remove' cart.id %}" type="button"
+            class="btn-close" aria-label="Close"></a>
+        </div>
+
+        <div class="col">
+        </div>
+        {{cart.product.discount_price}} грн
+
+        <div class="col-6">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-secondary btn-sm decrement"
+                data-cart-id
+                data-cart-change-url>-</button>
+            </span>
+            <input type="text" class="form-control number"
+              value="{{cart.quantity}}" readonly>
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-secondary btn-sm increment"
+                data-cart-id
+                data-cart-change-url>+</button>
+            </span>
+            <p style="padding-left: 10px;">= {{cart.products_price}} грн</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="modal-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            Кількість товарів: {{carts.total_quantity}}
+          </div>
+          <div class="col">
+            Ітогова ціна: {{carts.total_price}}
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="row">
+
+    <div class="col">
+      <label for="exampleFormControlInput1" class="form-label">Ім'я отримувача</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1" class="form-label">Прізвище отримувача</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Адреса доставки</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <div class="row">
+    <div class="col">
+      
+      <div class="form-group">
+        <label for="id_phone_number">Номер телефону</label>
+        <input type="phonenumber" class="form-control" id="id_phone_number"
+          value="+380"
+          name="phone_number" required>
+          {% if form.phone_number.errors %}
+            <div class="alert alert-danger alert-dismissible fade show">
+              {{form.phone_number.errors}}</div>
+          {% endif %}
+      </div>
+    </div>
+    <div class="col">
+
+      <fieldset class="form-group">
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+              <label class="form-check-label" for="gridRadios1">
+                Оплата карткою
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+              <label class="form-check-label" for="gridRadios2">
+                Оплата готівкою
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <br>
+  <!-- Замовити -->
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <button type="button" style="width: 300px;"
+        class="btn btn-secondary">Замовити</button>
+    </div>
+  </div>
+  {% endblock content %}

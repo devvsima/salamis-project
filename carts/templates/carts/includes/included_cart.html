@@ -64,8 +64,9 @@
           <div class="row justify-content-md-center">
             <div class="col-md-auto">
               {% if carts %}
-              <button type="button" style="width: 300px;"
-              class="btn btn-secondary">Замовити</button>
+              
+              <a href="{% url 'orders:create_order' %}" type="button" style="width: 300px;"
+              class="btn btn-secondary">Замовити</a>
                 
               {% endif %}
             </div>

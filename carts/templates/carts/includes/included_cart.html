@@ -20,7 +20,7 @@
             <div class="card-header">
               <div class="card-title">{{cart.product.name}}
 
-                <button type="button" class="btn-close" aria-label="Close"></button>
+                <a href="{% url 'cart:cart_remove' cart.id %}" type="button" class="btn-close" aria-label="Close"></a>
               </div>
             
               <div class="col">                    
@@ -63,8 +63,11 @@
           <br>
           <div class="row justify-content-md-center">
             <div class="col-md-auto">
+              {% if carts %}
               <button type="button" style="width: 300px;"
-                class="btn btn-secondary">Замовити</button>
+              class="btn btn-secondary">Замовити</button>
+                
+              {% endif %}
             </div>
           </div>
         </div>

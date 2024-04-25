@@ -21,6 +21,8 @@
               <div class="card-title">{{cart.product.name}}
 
                 <a href="{% url 'cart:cart_remove' cart.id %}" type="button" class="btn-close" aria-label="Close"></a>
+                {% csrf_token %}
+
               </div>
             
               <div class="col">                    

@@ -141,8 +141,8 @@
   <!-- Замовити -->
   <div class="row justify-content-md-center">
     <div class="col-md-auto">
-      <button type="button" style="width: 300px;"
-        class="btn btn-secondary">Замовити</button>
+      <a href="{% url 'orders:done_order' %}" type="button" style="width: 300px;"
+        class="btn btn-secondary">Замовити</a>
     </div>
   </div>
   {% endblock content %}

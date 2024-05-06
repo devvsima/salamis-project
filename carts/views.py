@@ -33,14 +33,17 @@ def cart_change(request, product_slug):
                 if cart.quantity > 1:
                     cart.quantity += -1
                     cart.save()
-        else:
-            Cart.objects.create(user=request.user, product=product, quantity=1)
-
+                else:
+                    cart = Cart.objects.get(id=cart.id)
+                    cart.delete()
     return redirect(request.META["HTTP_REFERER"])
 
 
+
 def cart_remove(request, cart_id):
-    cart = Cart.objects.get(id=cart_id.id)
+    print(cart_id)
+    cart = Cart.objects.get(id=cart_id)
     cart.delete()
+
     return redirect(request.META["HTTP_REFERER"])
 

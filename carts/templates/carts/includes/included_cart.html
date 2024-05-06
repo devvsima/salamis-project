@@ -12,12 +12,12 @@
       {% for cart in carts %}
 
       <div class="modal-body">
+        {% csrf_token %}
         <div class="row">
           <div class="card mb-3 text-bg-light shadow-lg">
             <div class="card-header">
               <div class="card-title">{{cart.product.name}}
                 <a href="{% url 'cart:cart_remove' cart.id %}" type="button" class="btn-close" aria-label="Close"></a>
-                {% csrf_token %}
               </div>
 
               {{cart.product.discount_price}} грн

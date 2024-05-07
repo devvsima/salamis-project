@@ -28,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#pcn1wl41v!l*vn5d$#tek_w@p7)k83h+dbd*4656ixldaksei'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('debug', default=True)
+DEBUG = env.bool('server_debug', default=False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', env.str('server_ip', default=None), env.str('server_domain', default=None)]
 
 
 # Application definition
@@ -52,9 +52,7 @@ INSTALLED_APPS = [
     'carts',
     'orders',
 ]
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+INTERNAL_IPS = []
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,7 +72,7 @@ ROOT_URLCONF = 'salamis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [f'{BASE_DIR}/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,7 +95,7 @@ name = env.str("name", default=None)
 user = env.str("user", default="postgres")
 password = env.str("password", default=None)
 host = env.str("host", default="localhost")
-port = env("port", default=5432)
+port = env.int("port", default=5432)
 
 DATABASES = {
     'default': {

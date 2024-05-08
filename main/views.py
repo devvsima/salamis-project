@@ -15,4 +15,4 @@ def about(request) -> HttpResponse:
     context = {
         "title": 'About us',
     }
-    return JsonResponse(context)
+    return render(request, 'main/about.html', context)

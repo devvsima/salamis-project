@@ -2,9 +2,6 @@
 {% load static %}
 {% load goods_tags %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
-{% endblock css %}
 
 {% block title %}
 <title>Каталог</title>
@@ -78,38 +75,28 @@
     </div>
   </div>
 </div>
-
-
-<div class="container">
-  <div class="row">
-    {% for i in products %}
-      <div class="col-md-3">
-        <div class="card" style="width: 19rem;  margin-bottom: 12px;">
-          {% if i.image %}
-            <img src="{{i.image.url}}" class="card-img-top"
-              style="width: 100%; height: 420px;" alt="...">
+<div class="row" id="productCatalog">
+  {% for product in products %}
+    <div class="col-lg-3 col-md-4 mb-4">
+      <div class="card h-100">
+        <img style="height: 350px;" class="card-img-top" src="{{product.image.url}}" alt="">
+        <div class="card-body">
+          <a href='{% url "catalog:product" product.slug %}'>
+            <h4 class="card-title">
+              {{product.name}}
+            </h4>
+          </a>
+          {% if product.discount %}
+            <p>{{product.discount_price}} ₴ <strike>{{product.price}}</strike></p>
           {% else %}
-            <img src="{%static 'goods/nf2.png'%}" class="card-img-top"
-              style="width: 100%; height: 420px;" alt="...">
+            <p class="discounted-price">{{product.price}} ₴</p>
           {% endif %}
-          <!-- нижняя чясть карты -->
-          <div class="card-body">
-            <a href='{% url "catalog:product" i.slug %}'>
-              <h5 class="card-title">{{i.name|truncatechars:20}}</h5>
-            </a>
-            {% if i.discount %}
-              <p>{{i.discount_price}} ₴ <strike>{{i.price}}</strike></p>
-            {% else %}
-              <p class="discounted-price">{{i.price}} ₴</p>
-            {% endif %}
-            <!-- <a href="#" class="btn">Купить</a> -->
-            <!--  -->
-          </div>
         </div>
       </div>
-    {% endfor %}
-  </div>
+    </div>
+  {% endfor %}
 </div>
+
 <!-- Пагинация -->
 <div class="container">
   <div class="d-flex justify-content-center">
@@ -143,6 +130,7 @@
 
     </nav>
   </div>
+</div>
 </div>
 
 {% endblock content %}

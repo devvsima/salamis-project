@@ -123,7 +123,7 @@
   <!-- Замовити -->
   <div class="row justify-content-md-center">
     <div class="col-md-auto">
-      <a href="{% url 'orders:done_order' %}" type="button" style="width: 300px;"
+      <a href="{% url 'orders:done_order' user.id %}" type="button" style="width: 300px;"
         class="btn btn-secondary">Замовити</a>
     </div>
   </div>

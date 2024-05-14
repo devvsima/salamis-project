@@ -17,7 +17,7 @@ def catalog(request, category_slug=None):
         goods = q_search(query)
     else:
         goods = Products.objects.filter(category__slug=category_slug)
-хха
+
     # сортування
     if on_sale:
         goods = goods.filter(discount__gt=0)

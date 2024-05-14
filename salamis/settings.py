@@ -17,6 +17,10 @@ from environs import Env
 env = Env()
 env.read_env()
 
+
+SERVER_IP = env.str('server_ip', default=None)
+SERVER_DOMEN = env.str('server_domain', default=None)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,7 +34,8 @@ SECRET_KEY = 'django-insecure-#pcn1wl41v!l*vn5d$#tek_w@p7)k83h+dbd*4656ixldaksei
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('server_debug', default=False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', env.str('server_ip', default=None), env.str('server_domain', default=None)]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', SERVER_IP, SERVER_DOMEN]
+CSRF_TRUSTED_ORIGINS = [f'https://{SERVER_DOMEN}']
 
 
 # Application definition
@@ -53,6 +58,9 @@ INSTALLED_APPS = [
     'orders',
 ]
 INTERNAL_IPS = []
+# settings.py
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

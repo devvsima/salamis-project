@@ -10,15 +10,15 @@ def catalog(request, category_slug=None):
     query = request.GET.get("q", None) #search
 
 
-    # фильтр и поиск
+    # фільтр та пошук
     if category_slug == "all":
         goods = Products.objects.all()
     elif query:
         goods = q_search(query)
     else:
         goods = Products.objects.filter(category__slug=category_slug)
-
-    # сортировка
+хха
+    # сортування
     if on_sale:
         goods = goods.filter(discount__gt=0)
     if order_by and order_by != 'default':

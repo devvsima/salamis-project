@@ -24,7 +24,7 @@
       </div>
   </div>
   <div class="col-md-1">
-    <!-- Форма фильтров -->
+    <!-- Форма фільтрів -->
     <div class="dropdown mb-3">
       <button class="btn btn dropdown-toggle btn" type="button"
         data-bs-toggle="dropdown"
@@ -97,13 +97,13 @@
   {% endfor %}
 </div>
 
-<!-- Пагинация -->
+<!-- Пагінація -->
 <div class="container">
   <div class="d-flex justify-content-center">
 
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <!-- Предыдущая страница -->
+        <!-- Попередня сторінка -->
         <li class="page-item {% if not products.has_previous %} disabled {% endif %}">
           <a class="page-link"
             href="
@@ -111,7 +111,7 @@
         {% else %} #
         {% endif %}"><<<</a>
         </li>
-        <!-- Текущая страница -->
+        <!-- Активна торінка -->
         {% for page in products.paginator.page_range %}
           {% if page >= products.number|add:-2 and page <= products.number|add:2 %}
             <li class="page-item {% if products.number == page %}active{% endif %}">
@@ -119,7 +119,7 @@
             </li>
           {% endif %}
         {% endfor %}
-        <!-- След страница -->
+        <!-- Наступна сторінка -->
         <li class="page-item {% if not products.has_next %} disabled {% endif %}">
           <a class="page-link"
             href="
